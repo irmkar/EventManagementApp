@@ -1,0 +1,86 @@
+﻿@model EventManagementApp.Models.Event
+
+@{
+    ViewData["Title"] = "Yeni Etkinlik Ekle";
+}
+
+<div class="container mt-4 d-flex flex-column" style="min-height: 100vh;">
+    <h2>@ViewData["Title"]</h2>
+
+    <form asp-action="Create" method="post" class="flex-grow-1">
+        <div class="form-group mb-3">
+            <label asp-for="Title">Başlık</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Location">Yer</label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Date">Zaman</label>
+            <input asp-for="Date" type="datetime-local" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="IsPaid">Ücretli mi?</label>
+            <input asp-for="IsPaid" type="checkbox" class="form-check-input" id="IsPaidCheckbox" />
+            @* <label for="IsPaidCheckbox">Ücretli mi?</label> *@
+        </div>
+
+        <div id="feeGroup" class="form-group mb-3" style="display:none;">
+            <label asp-for="Price">Ücret TL</label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="EventType">Etkinlik Tipi</label>
+            <select asp-for="EventType" class="form-control">
+                <option value="Konferans">Konferans</option>
+                <option value="Seminer">Seminer</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Eğitim">Eğitim</option>
+            </select>
+            <span asp-validation-for="EventType" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Description">Açıklama</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="ImageUrl">Görsel</label>
+            <input asp-for="ImageUrl" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="mt-auto d-flex justify-content-end gap-2 mb-5">
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+        <a class="btn btn-secondary" asp-action="Index">İptal</a>
+        </div>
+    </form>
+
+    <!-- Butonlar -->
+   @*  <div class="mt-auto d-flex justify-content-end gap-2 mb-5">
+        <button type="submit" class="btn btn-primary d-flex justify-content-end">Kaydet</button>
+        <a class="btn btn-secondary" asp-action="Index">İptal</a>
+    </div> *@
+
+
+    
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("IsPaidCheckbox").addEventListener("change", function () {
+            var feeGroup = document.getElementById("feeGroup");
+            feeGroup.style.display = this.checked ? "block" : "none";
+        });
+    </script>
+}

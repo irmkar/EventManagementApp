@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EventManagementApp.Models.Event>
+
+@{
+    ViewData["Title"] = "Etkinlikler";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <a class="btn btn-primary mb-3" asp-action="Create">Yeni Etkinlik Ekle</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Başlık</th>
+                <th>Yer</th>
+                <th>Zaman</th>
+                <th>Ücretli/Ücretsiz</th>
+                <th>Ücret (TL)</th>
+                <th>Etkinlik Tipi</th>
+                <th>Açıklama</th>
+                <th>Görsel</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Location</td>
+                    <td>@item.Date.ToString("g")</td>
+                    <td>@(item.IsPaid ? "Ücretli" : "Ücretsiz")</td>
+                    <td>@(item.IsPaid ? $"{item.Price:C}" : "-")</td>
+                    <td>@item.EventType</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <a href="@item.ImageUrl" target="_blank">
+                            <span>&#x2192;</span> 
+                        </a>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a>
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

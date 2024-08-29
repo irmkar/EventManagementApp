@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+    bool isAuthenticated = User.Identity.IsAuthenticated;
+}
+
+<div class="container mt-5">
+    <div class="jumbotron text-center bg-light p-5 rounded-lg">
+        <h1 class="display-4">Hoş Geldiniz!</h1>
+        <p class="lead">Bu, etkinliklerinizi kolayca yönetebileceğiniz bir platformdur.</p>
+        <hr class="my-4">
+        <p>Etkinliklerinizi eklemek, düzenlemek veya yönetmek için aşağıdaki butonları kullanabilirsiniz.</p>
+
+        <!-- Kullanıcı giriş yapmışsa -->
+        @if (isAuthenticated)
+        {
+            <a class="btn btn-primary btn-lg" href="/Events" role="button">Etkinlikler</a>
+            <a class="btn btn-secondary btn-lg" href="/Events/Create" role="button">Yeni Etkinlik Ekle</a>
+        }
+        else
+        {
+            <a class="btn btn-primary btn-lg" href="/Identity/Account/Login" role="button">Etkinlikler</a>
+            <a class="btn btn-secondary btn-lg" href="/Identity/Account/Login" role="button">Yeni Etkinlik Ekle</a>
+        }
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Kolay Yönetim</h5>
+                    <p class="card-text">Etkinliklerinizi kolayca ekleyebilir, düzenleyebilir ve yönetebilirsiniz.</p>
+                    <a href="#" class="btn btn-outline-primary">Daha Fazla Bilgi</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Esnek Özellikler</h5>
+                    <p class="card-text">Farklı türde etkinlikler için esnek özellikler ve ayarlar mevcuttur.</p>
+                    <a href="#" class="btn btn-outline-primary">Daha Fazla Bilgi</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Güvenli Erişim</h5>
+                    <p class="card-text">Tüm verileriniz güvenle saklanır ve korunur.</p>
+                    <a href="#" class="btn btn-outline-primary">Daha Fazla Bilgi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
