@@ -1,4 +1,4 @@
-# Event Management App
+# Event Management
 
 This project is a simple event management application developed using .NET Core MVC. The application provides basic CRUD (Create, Read, Update, Delete) functionalities for managing events.
 
