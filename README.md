@@ -6,7 +6,9 @@ This project is a simple event management application developed using .NET Core 
 - [Project Overview](#project-overview)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Requirements](#requirements)
 - [Usage](#usage)
+- [Seeding Data](#seeding-data)
 
 
 ## Project Overview
@@ -27,6 +29,12 @@ The goal of this project is to develop a basic application for managing events u
 - **Bootstrap**
 - **.NET Core Identity**
 
+## Requirements
+- **.NET 6.0 SDK** or later
+- **MySQL** for database
+- **Visual Studio 2022** or later
+- **Git** for version control
+
 
 ## Usage
 
@@ -35,3 +43,12 @@ The goal of this project is to develop a basic application for managing events u
 - Edit Event: Modify existing event details.
 - Delete Event: Remove an event from the list.
 - Event Details: View the full details of an event.
+
+## Seeding Data
+
+The application automatically seeds the database with an initial admin user and roles when the database is first created. 
+The following default user is created:
+
+- Username: admin@example.com
+- Password: Admin@123
+The admin user is assigned the "Admin" role. This seeding process is handled automatically when you run the application for the first time after setting up the database.
