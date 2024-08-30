@@ -51,4 +51,4 @@ The following default user is created:
 
 - Username: admin@example.com
 - Password: Admin@123
-The admin user is assigned the "Admin" role. This seeding process is handled automatically when you run the application for the first time after setting up the database.
+- The admin user is assigned the "Admin" role. This seeding process is handled automatically when you run the application for the first time after setting up the database.
