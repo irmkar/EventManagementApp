@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
-// Add services to the container.
+//container' a servis ekleme.
 
 builder.Services.AddMemoryCache();
 
@@ -15,29 +15,29 @@ builder.Services.AddControllersWithViews();
 
 
 
-// Add MySQL DbContext
+// MySQL DbContext ekleme
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 21)) 
     ));
 
-// Add Identity
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false) // Email doðrulama gereksinimini devre dýþý býrakýr)
+// Identity ekleme
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false) // Email doðrulama gereksinimini devre dýþý)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 
 
-// Seed the database with initial data
+// database e seed ekleme
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
     try
     {
-        // SeedData sýnýfýný çaðýrarak veritabanýna veri ekleyin
+        // SeedData sýnýfýný çaðýrarak veritabanýna veri ekleme
         await SeedData.Initialize(services);
     }
     catch (Exception ex)
@@ -47,7 +47,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Configure the HTTP request pipeline.
+// HTTP konfigurasyonu
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
